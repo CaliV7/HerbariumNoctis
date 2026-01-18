@@ -1,3 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+/* Palette personnalisée pour Tailwind CSS */
+@theme {
+  --color-papaya: #d28437;
+  --color-sand: #f5e9c3;
+  --color-leaf: #2f4731;
+  --color-snake: #121b13;
+  --color-ruby: #990202;
+}
+
+body {
+  background-color: #390517;
+  color: var(--color-sand);
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+}

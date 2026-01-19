@@ -1,1 +1,45 @@
-<p>footer works!</p>
+<footer class="w-full bg-snake text-sand relative">
+  <div class="p-8 flex">
+    <!-- Colonne Gauche : Identité + Logo mystique -->
+    <div class="flex flex-1 items-center gap-4 justify-start">
+      <div class="flex justify-center items-center bg-leaf rounded-full w-10 h-10 border border-papaya ring-2 ring-ruby">
+        <svg class="w-6 h-6" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.83892 12.4543s1.24988-3.08822-.21626-5.29004C8.15656 4.96245 4.58671 4.10885 4.39794 4.2436c-.18877.13476-1.11807 3.32546.34803 5.52727 1.4661 2.20183 5.09295 2.68343 5.09295 2.68343Zm0 0C10.3389 13.4543 12 15 12 18v2c0-2-.4304-3.4188 2.0696-5.9188m0 0s-.4894-2.7888 1.1206-4.35788c1.6101-1.56907 4.4903-1.54682 4.6701-1.28428.1798.26254.4317 2.84376-1.0809 4.31786-1.61 1.5691-4.7098 1.3243-4.7098 1.3243Z"/>
+        </svg>
+      </div>
+      <span class="text-xl font-semibold tracking-wider">Herbarium Noctis</span>
+    </div>
+
+    <!-- Colonne Centre : Navigation centrée -->
+    <div class="flex flex-col flex-1 items-center justify-center">
+      <nav class="flex items-center gap-3 justify-center text-sm font-medium">
+        <a class="hover:text-papaya/90 transition" href="/home">Accueil</a>
+        <span class="text-ruby select-none">|</span>
+        <a class="hover:text-papaya/90 transition" href="/herbarium">Herbarium</a>
+        <span class="text-ruby select-none">|</span>
+        <a class="hover:text-papaya/90 transition" href="/suggest">Suggérer une plante</a>
+        <span class="text-ruby select-none">|</span>
+        <a class="hover:text-papaya/90 transition" href="/about">À propos</a>
+      </nav>
+    </div>
+
+    <!-- Colonne Droite : Avertissement Mystic aligné à droite -->
+    <div class="flex flex-col flex-1 items-end justify-center">
+      <div class="text-xs text-sand italic text-right max-w-xs ml-6">
+        <span>
+          À but éducatif et culturel <br> Les informations ne remplacent pas un avis médical.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center border-t border-papaya/50 text-xs text-papaya py-4 gap-1">
+    © 2026 Herbarium Noctis &mdash;
+    <span class="italic flex items-center justify-center gap-1">
+      Developed by Coconuuut with
+      <svg class="w-3 h-3" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
+      </svg>
+    </span>
+  </div>
+</footer>

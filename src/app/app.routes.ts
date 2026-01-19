@@ -5,6 +5,7 @@ import { SuggestPlant } from './pages/suggest-plant/suggest-plant';
 import { About } from './pages/about/about';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
   { path: 'herbarium', component: Herbarium },
   { path: 'suggest', component: SuggestPlant },

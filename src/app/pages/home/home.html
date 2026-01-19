@@ -1,60 +1,168 @@
-<section class="relative w-full min-h-screen">
+<!-- Section 1 : Hero -->
+<section class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
+  style="background-image: url('assets/images/wood-leaf.png');">
+  <div class="bg-leaf absolute inset-0 opacity-70"></div>
+  <div class="relative z-10 flex flex-row items-center justify-center gap-12 w-full px-6 max-w-6xl mx-auto mt-16">
 
-  <!-- Hero 2 colonnes -->
-  <div class="relative h-screen bg-cover bg-center flex items-center justify-center"
-       style="background-image: url('assets/images/wood-leaf.png');">
-    <div class="bg-leaf absolute inset-0 opacity-70"></div>
-    <div class="relative z-10 flex flex-row items-center justify-center gap-12 w-full px-6 max-w-6xl mx-auto">
-
-      <!-- Colonne Gauche : Présentation -->
-      <div class="flex-1 text-left">
-        <h1 class="text-7xl font-bold text-papaya mb-2 drop-shadow-md">
-          Herbarium Noctis
-        </h1>
-        <h2 class="text-2xl font-semibold text-blood mb-4 italic drop-shadow-[0_0_8px_var(--color-sand)]">
-          Traditions & Savoirs du Végétal
-        </h2>
-        <p class="text-xl text-sand opacity-90 max-w-xl mb-1">
-          Entre ombre et lumière, Herbarium Noctis vous invite à goûter au murmure secret du végétal.<br>
-          Un espace suspendu, empreint de douceur et de mystère, où l’on effleure les traditions des peuples des îles, d’Afrique et d’Asie.<br>
-          <span class="block mt-3">
-            Un carnet feuilleté de récits, de symboles, d’énergies tranquilles.<br>
-            Accueillez la sagesse des plantes comme on ouvre la main à la rosée : avec curiosité et respect.<br>
-            Ici, chaque fiche est une porte vers une mémoire végétale, discrète et profonde.
+    <!-- Colonne Gauche : Présentation -->
+    <div class="flex-1 text-left">
+      <h1 class="text-7xl font-bold text-papaya mb-2 drop-shadow-md">
+        Herbarium Noctis
+      </h1>
+      <h2 class="text-2xl font-semibold text-ruby mb-4 italic drop-shadow-[0_0_8px_var(--color-sand)]">
+        Traditions & Savoirs du Végétal
+      </h2>
+      <p class="text-xl text-sand opacity-90 max-w-xl mb-1">
+        Entre ombre et lumière, Herbarium Noctis vous invite à goûter au murmure secret du végétal.<br>
+        Un espace suspendu, empreint de douceur et de mystère, où l’on effleure les traditions des peuples des îles, d’Afrique et d’Asie.<br>
+        <span class="block mt-3">
+          Un carnet feuilleté de récits, de symboles, d’énergies tranquilles.<br>
+          Accueillez la sagesse des plantes comme on ouvre la main à la rosée : avec curiosité et respect.<br>
+          Ici, chaque fiche est une porte vers une mémoire végétale, discrète et profonde.
+        </span>
+      </p>
+      <div class="w-full flex justify-end">
+        <button routerLink="/herbarium"
+          class="group bg-ruby/70 text-sand font-semibold pl-8 pr-6 py-4 mr-6 rounded-full shadow-lg hover:bg-ruby transition flex items-center overflow-hidden">
+          <span class="inline-block transform transition-transform duration-300 group-hover:-translate-x-2">
+            Découvrir l’Herbarium
           </span>
+          <span class="inline-block opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+            →
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Colonne Droite : Focus Plante du Mois -->
+    <div class="flex-shrink-0 w-1/3">
+      <div class="bg-papaya/70 rounded-4xl p-8 shadow-lg flex flex-col items-center gap-4 shadow-ruby/50">
+        <h2 class="text-3xl font-bold text-center text-leaf">
+          Plante du Mois
+        </h2>
+        <div class="w-36 h-36 bg-leaf rounded-full border-4 border-papaya ring-4 ring-ruby shadow-lg relative flex items-center justify-center">
+          <img src="assets/images/hibiscus.png" alt="Hibiscus" class="w-32 h-32 rounded-full object-cover" />
+        </div>
+        <h3 class="text-2xl font-semibold text-center leading-tight">
+          Hibiscus
+        </h3>
+        <p class="text-sm text-blood font-semibold italic mt-[-18px]">Hibiscus sabdariffa</p>
+        <p class="text-sm text-sand/90 font-semibold text-center mb-3">
+          Utilisée pour ses propriétés cosmétiques et médicinales, l’hibiscus favorise l’équilibre hormonal et la santé de la peau.
         </p>
-        <div class="w-full flex justify-end">
-          <button routerLink="/herbarium"
-            class="group bg-blood/70 text-sand font-semibold pl-8 pr-6 py-4 mr-6 rounded-full shadow-lg hover:bg-ruby transition flex items-center overflow-hidden">
-            <span class="inline-block transform transition-transform duration-300 group-hover:-translate-x-2">
-              Découvrir l’Herbarium
-            </span>
-            <span class="inline-block opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
-              →
-            </span>
-          </button>
+        <span class="text-xs text-ruby px-3 py-1 rounded-xl bg-sand/70 mb-2 font-medium tracking-wide">
+          Origines : Traditions Créoles & Africaines
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 : Plante du Mois -->
+<section class="py-16 px-8 bg-blood text-sand w-full flex flex-col">
+  <h2 class="text-4xl font-bold mb-8 text-center">Plante du Mois</h2>
+  <div class="max-w-6xl mx-auto flex items-center justify-center">
+    <div class="w-full grid grid-cols-12 rounded-4xl bg-leaf shadow-lg shadow-papaya/50 relative p-4">
+      <!-- Image & quote -->
+      <div class="col-span-5 flex flex-col items-center justify-center py-6 gap-2">
+        <div class="w-52 h-52 bg-sand/5 rounded-full border-4 border-papaya ring-4 ring-ruby shadow-lg relative flex items-center justify-center">
+          <img src="assets/images/hibiscus.png" alt="Hibiscus"
+               class="w-48 h-48 rounded-full object-cover" />
+        </div>
+        <div class="my-4 text-center">
+          <h3 class="text-3xl font-extrabold tracking-tight text-sand drop-shadow-lg">Hibiscus</h3>
+          <span class="block text-papaya text-base font-semibold italic">Hibiscus sabdariffa</span>
+        </div>
+        <blockquote class="italic text-sand text-center text-base border-l-4 border-papaya pl-3  mb-4">
+          « La fleur qui éclaire la nuit par ses rubis sacrés. »
+        </blockquote>
+        <div class="flex flex-col items-center justify-end mt-2 gap-3">
+          <span class="inline-block bg-sand text-ruby px-3 py-1 rounded-xl shadow text-xs font-medium tracking-wide">
+            Origines : Traditions Créoles & Africaines
+          </span>
+          <a
+            class="text-xs text-snake italic text-right"
+            href="https://fr.wikipedia.org/wiki/Hibiscus_sabdariffa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pour + d’infos consultez l’article <span class="underline hover:text-papaya/60 transition duration-300">Wikipédia</span>
+          </a>
         </div>
       </div>
-
-      <!-- Colonne Droite : Focus Plante du Mois -->
-      <div class="flex-shrink-0 w-1/3">
-        <div class="bg-papaya/70 rounded-4xl p-8 shadow-lg flex flex-col items-center gap-4 shadow-blood/50">
-          <h2 class="text-3xl font-bold text-center text-snake/80">
-            Plante du Mois
-          </h2>
-          <img src="assets/images/hibiscus.png" alt="Hibiscus" class="w-34 h-34 rounded-2xl border border-sand shadow-lg" />
-          <h3 class="text-2xl font-semibold text-center leading-tight">
-            Hibiscus
-          </h3>
-          <p class="text-sm text-blood font-semibold italic mt-[-18px]">Hibiscus sabdariffa</p>
-          <p class="text-sm text-sand/90 text-center mb-3">
-            Utilisée pour ses propriétés cosmétiques et médicinales, l’hibiscus favorise l’équilibre hormonal et la santé de la peau.
-          </p>
-          <span class="text-xs text-ruby px-3 py-1 rounded-xl bg-sand/70 mb-2">
-            Origines : traditions créoles & africaines
+      <!-- Infos -->
+      <div class="col-span-7 flex flex-col h-full py-6 pr-6 gap-6">
+        <div class="grid grid-cols-12 gap-6 w-full">
+          <!-- Vertus -->
+          <div class="col-span-6 flex flex-col bg-snake/70 rounded-xl shadow-lg p-5">
+            <div class="flex items-center justify-start gap-3 text-papaya mb-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V3m0 0c-2.974 2.98-8.007 9.235-6 13.25 1.183 2.185 3.837 2.713 6 1.25 2.163 1.463 4.817.935 6-1.25C20.007 12.236 14.974 5.98 12 3z"/>
+              </svg>
+              <span class="font-bold text-lg tracking-wider">Vertus</span>
+            </div>
+            <ul class="text-sand/90 text-base list-disc list-inside space-y-1 font-medium ml-1">
+              <li>Équilibre hormonal</li>
+              <li>Beauté de la <span class="text-papaya/80">peau</span> & <span class="text-papaya/80">cheveux</span></li>
+              <li>Antioxydant naturel</li>
+              <li>Soutien <span class="text-ruby">cardiovasculaire</span></li>
+              <li>Baisse de la tension artérielle</li>
+            </ul>
+          </div>
+          <!-- Usages -->
+          <div class="col-span-6 flex flex-col rounded-xl border-2 border-sand/40 shadow-lg p-5">
+            <div class="flex gap-2 items-center mb-2 text-snake">
+              <svg class="w-6 h-6"  fill="currentColor" viewBox="0 0 640 640">
+                <path d="M320 576C214 576 128 490 128 384C128 292.8 258.2 109.9 294.6 60.5C300.5 52.5 309.8 48 319.8 48L320.2 48C330.2 48 339.5 52.5 345.4 60.5C381.8 109.9 512 292.8 512 384C512 490 426 576 320 576zM240 376C240 362.7 229.3 352 216 352C202.7 352 192 362.7 192 376C192 451.1 252.9 512 328 512C341.3 512 352 501.3 352 488C352 474.7 341.3 464 328 464C279.4 464 240 424.6 240 376z"/>
+              </svg>
+              <span class="font-bold text-lg tracking-wider">Usages</span>
+            </div>
+            <ul class="text-sand/40 text-base list-disc list-inside space-y-1 font-medium ml-1">
+              <li>Infusion <span class="text-papaya">"Bissap"</span> revigorante</li>
+              <li>Soin capillaire fortifiant</li>
+              <li>Colorant de <span class="text-ruby">rituels</span> & décorations</li>
+              <li>Décoction digestive</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Bloc mystique/symbole -->
+        <div class="w-full bg-papaya/80 rounded-2xl p-5 shadow-lg flex flex-col justify-center items-center">
+          <span class="text-ruby/90 text-lg font-bold tracking-wide mb-1">
+            + Symbole d'énergie & purification +
+          </span>
+          <span class="text-sand/90 text-base leading-relaxed font-medium">
+            Fleur-talisman des peuples caribéens : gardienne de la lignée et protectrice du foyer.
+            <span class="text-leaf">L'Hibiscus</span> accompagne <span class="font-semibold text-ruby">initiations, rites de passage</span> et processions,
+            symbolisant circulation du sang, vitalité et prospérité. <br />
+            Elle relie traditions créoles, africaines et asiatiques à travers ses usages ancestraux.
           </span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Section 3 : Suggestion -->
+<section class="relative w-full bg-cover bg-center flex items-center justify-center py-16"
+  style="background-image: url('assets/images/colored-leaf.jpg');">
+  <div class="bg-papaya/20 absolute inset-0"></div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center gap-8 w-full px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl text-sand font-bold mb-4">Partage ton savoir</h2>
+    <p class="text-xl mb-4 font-semibold text-center">
+      Connais-tu une plante aux vertus remarquables ou un remède traditionnel que nous devrions ajouter ? <br>
+      Herbarium Noctis est un espace pour transmettre le savoir ancestral et culturel. <br>
+      Ton expérience peut enrichir notre herborium pour tous ceux qui souhaitent découvrir la richesse de la nature.
+    </p>
+    <button routerLink="/suggest"
+      class="group bg-papaya/80 text-snake font-semibold pl-8 pr-6 py-4 rounded-full shadow-lg hover:bg-papaya transition flex items-center overflow-hidden">
+      <span class="inline-block transform transition-transform duration-300 group-hover:-translate-x-2">
+        Suggérer une plante
+      </span>
+      <span class="inline-block opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+        →
+      </span>
+    </button>
+  </div>
+</section>
+

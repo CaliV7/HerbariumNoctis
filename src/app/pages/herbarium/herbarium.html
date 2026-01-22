@@ -1,13 +1,15 @@
 <section class="pb-16 pt-30 px-8 bg-blood text-sand w-full flex flex-col">
   <h1 class="text-6xl font-bold mb-2 text-center">Herbarium</h1>
   <p class="text-lg text-center italic text-papaya mb-12">
-    Les plantes de notre herborium sont des plantes qui nourrissent, soignent et protègent.
+    Les plantes de notre herbarium sont des plantes qui nourrissent, soignent et protègent.
   </p>
   <div class="w-full flex items-center justify-center">
     <div class="grid grid-cols-3 gap-8 items-stretch">
       @for (plant of plants; track plant.id) {
-        <app-plant-card [plant]="plant" />
+        <app-plant-card [plant]="plant" (click)="openModal(plant)"></app-plant-card>
       }
     </div>
   </div>
+
+  <app-plant-modal [plant]="selectedPlant()!" [open]="isModalOpen()" (close)="closeModal()"></app-plant-modal>
 </section>

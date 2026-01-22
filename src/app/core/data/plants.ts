@@ -94,7 +94,7 @@ export const PLANTS: Plant[] = [
     name: 'Neem',
     latinName: 'Azadirachta indica',
     image: 'assets/images/neem.png',
-    origins: ['Indienne', 'Africaine'],
+    origins: ['Asiatique', 'Africaine'],
     quote: 'L’arbre sacré aux mille vertus.',
     virtues: [
       'Purifie le sang',
@@ -152,7 +152,7 @@ export const PLANTS: Plant[] = [
     name: 'Menthe',
     latinName: 'Mentha spp.',
     image: 'assets/images/menthe.png',
-    origins: ['Créole', 'Europe', 'Asiatique'],
+    origins: ['Créole', 'Africaine', 'Asiatique'],
     quote: 'La feuille fraîche qui apaise et éveille les sens.',
     virtues: [
       'Stimule la digestion',
@@ -161,10 +161,10 @@ export const PLANTS: Plant[] = [
       'Soulagement des maux légers de tête'
     ],
     uses: [
-      'Infusion après repas pour faciliter la digestion',
-      'Inhalation vapeur pour les voies respiratoires',
-      'Ajoutée aux boissons ou salades pour ses arômes',
-      'Compresses contre les sensations de tête lourde'
+      'Infusion après repas',
+      'Inhalation vapeur',
+      'Aromatise les boissons et les salades',
+      'Compresses à la peau'
     ],
     symbolism: [
       'Symbole universel de fraîcheur, de renouveau et de purification, la menthe protège et dynamise le corps comme l’esprit.',

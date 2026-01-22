@@ -1,0 +1,100 @@
+<div class="flex flex-col w-md bg-papaya rounded-4xl p-8 gap-4 h-full flex-1 shadow-lg hover:scale-105 transition duration-300 cursor-pointer">
+
+  <!-- Image -->
+  <div class="flex justify-center">
+    <div class="flex justify-center items-center w-46 h-46 bg-leaf rounded-full border-3 border-papaya ring-3 ring-ruby">
+      <img
+        [src]="plant.image"
+        [alt]="plant.name"
+        class="w-43 h-43 rounded-full object-cover"
+      />
+    </div>
+  </div>
+
+  <!-- Titres -->
+  <div class="text-center">
+    <h3 class="text-2xl font-bold text-sand">
+      {{ plant.name }}
+    </h3>
+    <p class="italic text-blood font-semibold text-sm">
+      {{ plant.latinName }}
+    </p>
+  </div>
+
+  <!-- Quote -->
+  <div class="flex justify-center">
+    <blockquote class="italic text-leaf font-semibold text-sm border-l-4 border-sand pl-3 mb-4">
+      « {{ plant.quote }} »
+    </blockquote>
+  </div>
+
+
+  <!-- Vertus -->
+  <div class="bg-leaf/90 text-sand rounded-xl p-5 shadow-lg">
+    <div class="flex items-center justify-start gap-3 mb-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V3m0 0c-2.974 2.98-8.007 9.235-6 13.25 1.183 2.185 3.837 2.713 6 1.25 2.163 1.463 4.817.935 6-1.25C20.007 12.236 14.974 5.98 12 3z"/>
+      </svg>
+      <span class="font-bold text-lg tracking-wider">Vertus</span>
+    </div>
+    <ul class="text-sm  list-disc list-inside">
+      @for (virtue of plant.virtues; track virtue) {
+        <li>{{ virtue }}</li>
+      }
+    </ul>
+  </div>
+
+  <!-- Usages -->
+  <div class="bg-ruby/90 text-sand rounded-xl p-5 shadow-lg">
+    <div class="flex items-center justify-start gap-3 mb-2">
+      <svg class="w-6 h-6"  fill="currentColor" viewBox="0 0 640 640">
+        <path d="M320 576C214 576 128 490 128 384C128 292.8 258.2 109.9 294.6 60.5C300.5 52.5 309.8 48 319.8 48L320.2 48C330.2 48 339.5 52.5 345.4 60.5C381.8 109.9 512 292.8 512 384C512 490 426 576 320 576zM240 376C240 362.7 229.3 352 216 352C202.7 352 192 362.7 192 376C192 451.1 252.9 512 328 512C341.3 512 352 501.3 352 488C352 474.7 341.3 464 328 464C279.4 464 240 424.6 240 376z"/>
+      </svg>
+      <span class="font-bold text-lg tracking-wider">Usages</span>
+    </div>
+    <ul class="text-sm list-disc list-inside">
+      @for (uses of plant.uses; track uses) {
+        <li>{{ uses }}</li>
+      }
+    </ul>
+  </div>
+
+  <!-- Symbolique -->
+  <div class="px-2 text-sm text-leaf">
+    <div class="flex items-center justify-start px-1 gap-3 mb-2">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8.597 3.2A1 1 0 0 0 7.04 4.289a3.49 3.49 0 0 1 .057 1.795 3.448 3.448 0 0 1-.84 1.575.999.999 0 0 0-.077.094c-.596.817-3.96 5.6-.941 10.762l.03.049a7.73 7.73 0 0 0 2.917 2.602 7.617 7.617 0 0 0 3.772.829 8.06 8.06 0 0 0 3.986-.975 8.185 8.185 0 0 0 3.04-2.864c1.301-2.2 1.184-4.556.588-6.441-.583-1.848-1.68-3.414-2.607-4.102a1 1 0 0 0-1.594.757c-.067 1.431-.363 2.551-.794 3.431-.222-2.407-1.127-4.196-2.224-5.524-1.147-1.39-2.564-2.3-3.323-2.788a8.487 8.487 0 0 1-.432-.287Z"/>
+      </svg>
+      <span class="font-bold text-lg tracking-wider">Symbolique</span>
+    </div>
+    <div>
+      @for (symbolism of plant.symbolism; track symbolism) {
+        <p class="text-sand/80">
+          {{ symbolism }}
+        </p>
+      }
+    </div>
+  </div>
+
+  <!-- External link-->
+  <div class="flex flex-col h-full">
+    <div class="flex-1"></div> <!-- Spacer -->
+    <div class="flex justify-end">
+      @if (plant.externalLink) {
+        <a
+          [href]="plant.externalLink.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center text-xs italic text-right text-snake"
+        >
+          <span class="inline-block underline transform transition-transform duration-300 group-hover:-translate-x-2">
+            {{ plant.externalLink.label }}
+          </span>
+          <span class="inline-block opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+            →
+          </span>
+        </a>
+      }
+    </div>
+  </div>
+</div>

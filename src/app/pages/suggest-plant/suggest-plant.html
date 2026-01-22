@@ -1,1 +1,244 @@
-<p>suggest-plant works!</p>
+<section class="relative w-full bg-cover bg-center flex items-center justify-center py-24"
+  style="background-image: url('assets/images/dark-leaf.png');">
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="w-3xl bg-snake/60 backdrop-blur-md rounded-4xl p-10 shadow-xl space-y-6"
+  >
+
+    <!-- Titre -->
+    <header class="text-center space-y-2">
+      <h1 class="text-3xl font-bold text-sand tracking-wide">
+        Suggérer une plante
+      </h1>
+      <p class="italic text-papaya font-semibold text-sm">
+        Partagez vos savoirs culturels et ancestraux
+      </p>
+    </header>
+
+    <!-- Nom -->
+    <div class="space-y-4">
+      <label class="block">
+        <p class="text-md font-semibold text-sand ml-1">Nom commun <span class="text-ruby font-bold text-lg">*</span></p>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Hibiscus"
+          class="mt-1 w-full rounded-2xl p-3 bg-white/40 placeholder-leaf"
+        />
+      </label>
+      <label class="block">
+        <p class="text-md font-semibold text-sand ml-1">Nom vernaculaire</p>
+        <input
+          type="text"
+          formControlName="latinName"
+          placeholder="Hibiscus sabdariffa"
+          class="mt-1 w-full rounded-2xl p-3 bg-white/40 placeholder-leaf"
+        />
+      </label>
+    </div>
+
+    <!-- Origines -->
+    <div class="space-y-4 border-t-2 border-leaf pt-4">
+      <label class="font-bold text-sand text-md ml-1">Origines <span class="text-ruby font-bold text-lg">*</span></label>
+      <div formArrayName="origins" class="space-y-3">
+        @for (origin of origins.controls; track origin; let i = $index) {
+          <div class="flex gap-2 items-center">
+            <input
+              type="text"
+              [formControlName]="i"
+              placeholder="Créole, Africaine, Asiatique..."
+              class="flex-1 rounded-2xl p-3 bg-white/40 placeholder-leaf mt-1"
+            />
+            <button
+              type="button"
+              (click)="removeOrigin(i)"
+              class="px-1 text-ruby"
+              [disabled]="origins.length <= 1"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          (click)="addOrigin()"
+          class="text-md text-sand px-3 py-1 rounded-full bg-leaf/80 shadow-lg"
+        >
+          + Ajouter une origine
+        </button>
+      </div>
+    </div>
+
+    <!-- Vertus -->
+    <div class="space-y-4 border-t-2 border-leaf pt-4">
+      <label class="font-bold text-sand text-md ml-1">Vertus <span class="text-ruby font-bold text-lg">*</span></label>
+      <div formArrayName="virtues" class="space-y-3">
+        @for (virtue of virtues.controls; track virtue; let i = $index) {
+          <div class="flex gap-2 items-center">
+            <input
+              type="text"
+              [formControlName]="i"
+              placeholder="Aide à la digestion, Équilibre hormonal..."
+              class="flex-1 rounded-2xl p-3 bg-white/40 placeholder-leaf mt-1"
+            />
+            <button
+              type="button"
+              (click)="removeVirtue(i)"
+              class="px-1 text-ruby"
+              [disabled]="virtues.length <= 1"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          (click)="addVirtue()"
+          class="text-md text-sand px-3 py-1 rounded-full bg-leaf/80 shadow-lg"
+          [disabled]="virtues.length >= maxVirtues"
+        >
+          + Ajouter une vertu
+        </button>
+      </div>
+      @if (virtues.length >= maxVirtues) {
+        <p class="text-xs italic text-ruby font-semibold text-center">
+          Nombre maximal de vertus atteint
+        </p>
+      }
+    </div>
+
+    <!-- Usages -->
+    <div class="space-y-4 border-t-2 border-leaf pt-4">
+      <label class="font-bold text-sand text-md ml-1">Usages <span class="text-ruby font-bold text-lg">*</span></label>
+      <div formArrayName="uses" class="space-y-3">
+        @for (use of uses.controls; track use; let i = $index) {
+          <div class="flex gap-2 items-center">
+            <input
+              type="text"
+              [formControlName]="i"
+              placeholder="Infusion, cataplasme, tisane, etc."
+              class="flex-1 rounded-2xl p-3 bg-white/40 placeholder-leaf mt-1"
+            />
+            <button
+              type="button"
+              (click)="removeUse(i)"
+              class="px-1 text-ruby"
+              [disabled]="uses.length <= 1"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        }
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          (click)="addUse()"
+          class="text-md text-sand px-3 py-1 rounded-full bg-leaf/80 shadow-lg"
+          [disabled]="uses.length >= maxUses"
+        >
+          + Ajouter un usage
+        </button>
+      </div>
+      @if (uses.length >= maxUses) {
+        <p class="text-xs italic text-blood text-center">
+          Nombre maximal d’usages atteint
+        </p>
+      }
+    </div>
+
+    <!-- Symbolique -->
+    <div class="space-y-4 border-t-2 border-leaf pt-4">
+      <label class="block">
+        <p class="font-bold text-sand text-md ml-1">Description et symbolique <span class="text-ruby font-bold text-lg">*</span></p>
+        <textarea
+          formControlName="symbolismText"
+          rows="4"
+          placeholder="Séparez chaque phrase par un point. Chaque phrase terminée par un point sera considérée comme un élément distinct."
+          class="mt-1 w-full rounded-2xl p-3 bg-white/40 placeholder-leaf custom-scrollbar"
+          [class.border-ruby]="symbolismText?.invalid && symbolismText?.touched"
+          [class.border-2]="symbolismText?.invalid && symbolismText?.touched"
+        ></textarea>
+        <div class="flex justify-between items-center">
+          <div class="text-xs text-papaya ml-1">
+            @if (symbolismText?.invalid && symbolismText?.touched && symbolismText?.errors?.['maxLetters']) {
+              <span class="text-ruby font-semibold">
+                Limite dépassée
+              </span>
+            } @else if (symbolismText?.invalid && symbolismText?.touched && symbolismText?.errors?.['required']) {
+              <span class="text-ruby font-semibold">
+                Ce champ est requis
+              </span>
+            }
+          </div>
+          <div class="text-xs mr-1 -mt-1"
+               [class.text-sand]="symbolismLetterCount <= maxSymbolismLetters"
+               [class.text-ruby]="symbolismLetterCount > maxSymbolismLetters">
+            <span [class.font-semibold]="symbolismLetterCount > maxSymbolismLetters">
+              {{ symbolismLetterCount }} / {{ maxSymbolismLetters }} lettres
+            </span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Citation -->
+    <div>
+      <label class="block">
+        <p class="font-bold text-sand text-md ml-1">Citation</p>
+        <input
+          type="text"
+          formControlName="quote"
+          placeholder="Écrivez ici une citation liée à cette plante…"
+          class="mt-1 w-full rounded-2xl p-3 bg-white/40 placeholder-leaf"
+          [class.border-ruby]="quote?.invalid && quote?.touched"
+          [class.border-2]="quote?.invalid && quote?.touched"
+        >
+        <div class="flex justify-between items-center">
+          <div class="text-xs text-papaya ml-1">
+            @if (quote?.invalid && quote?.touched && quote?.errors?.['maxLetters']) {
+              <span class="text-ruby font-semibold">
+                Limite dépassée
+              </span>
+            }
+          </div>
+          <div class="text-xs mr-1"
+               [class.text-sand]="quoteLetterCount <= maxQuoteLetters"
+               [class.text-ruby]="quoteLetterCount > maxQuoteLetters">
+            <span [class.font-semibold]="quoteLetterCount > maxQuoteLetters">
+              {{ quoteLetterCount }} / {{ maxQuoteLetters }} lettres
+            </span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Bouton soumettre -->
+    <footer class="pt-6 flex justify-center">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="group bg-papaya/70 text-sand font-semibold pl-8 pr-6 py-4 mr-6 rounded-full shadow-lg hover:bg-papaya transition flex items-center overflow-hidden">
+        <span class="inline-block transform transition-transform duration-300 group-hover:-translate-x-2">
+          Soumettre la plante
+        </span>
+        <span class="inline-block opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+          →
+        </span>
+      </button>
+    </footer>
+
+  </form>
+</section>
